@@ -1,0 +1,95 @@
+<div class="container-lg">
+  <div class="row">
+    <table class="table table-hover mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Name Items</th>
+          <th scope="col">Jumlah</th>
+          <th scope="col">Harga</th>
+          <th scope="col">Jumlah</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        <tr>
+          <td><%= result.nama_item %></td>
+          <td><%= result.jumlah_pembelian %></td>
+          <td><%= result.harga%></td>
+          <td><%= result.total_harga %></td>
+        </tr>
+        <tr>
+          <td
+            colspan="3"
+            class="text-center fw-bold"
+            style="background-color: #acb8c1; font-size: 20px"
+          >
+            Total Harga
+          </td>
+          <td style="background-color: #acb8c1; font-size: 1.2rem">
+            <%= result.total_harga %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card w-75 mb-3">
+            <div class="card-body">
+              <h4 class="card-title">Konfirmasi Pesanan</h4>
+              <div class="body">
+                <div class="col">
+                  Nama Penerima : <%= result.nama_penerima %>
+                </div>
+                <div class="col">No telp : <%= result.no_telp %></div>
+                <div class="col">Alamat : <%= result.alamat%></div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <h5>Apakah anda yakin dengan pesanan ini?</h5>
+              <form action="/confirm-purchase" method="post">
+                <input type="hidden" value="<%= result.id%>" name="id" />
+                <input
+                  type="hidden"
+                  value="<%= result.nama_penerima %>"
+                  name="nama_penerima"
+                />
+                <input
+                  type="hidden"
+                  value="<%= result.no_telp %>"
+                  name="no_telp"
+                />
+                <input
+                  type="hidden"
+                  value="<%= result.alamat %>"
+                  name="alamat"
+                />
+                <input
+                  type="hidden"
+                  value="<%= result.nama_item %>"
+                  name="nama_item"
+                />
+                <input type="hidden" value="<%= result.harga %>" name="harga" />
+                <input
+                  type="hidden"
+                  value="<%= result.jumlah_pembelian %>"
+                  name="jumlah_pembelian"
+                />
+                <input
+                  type="hidden"
+                  value="<%= result.total_harga %>"
+                  name="total_harga"
+                />
+                <a href="/menu/pesan/<%= result.id%>" class="btn btn-warning">
+                  Batal
+                </a>
+                <button type="submit" class="btn btn-primary ms-3">
+                  Pesan Sekarang!
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

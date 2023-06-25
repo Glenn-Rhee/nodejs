@@ -1,0 +1,29 @@
+<div class="container d-flex justify-content-center">
+  <div class="card mb-3 mt-4" style="width: 380px">
+    <div class="img" style="text-align: center">
+      <img
+        src="<%= data.menu[0].gambar %>"
+        class="card-img-top img-fluid pt-4"
+        style="width: min-content"
+      />
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"><%= title %></h5>
+      <p class="card-text"><%= data.menu[0].deskripsi %></p>
+      <p class="card-text">
+        <small class="text-body-secondary"><%= data.menu[0].harga %></small>
+      </p>
+    </div>
+    <div class="card-footer d-flex justify-content-evenly">
+      <a href="/menu/#<%= data._id %>">
+        <button class="btn-warning btn rounded-pill" type="button">
+          Kembali
+        </button>
+      </a>
+      <a href="/menu/pesan/<%= data._id %>" class="btn btn-primary rounded-pill"
+        >Pesan</a
+      >
+    </div>
+  </div>
+</div>
+

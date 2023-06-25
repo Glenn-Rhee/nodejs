@@ -1,0 +1,29 @@
+<div class="container mt-4 position-absolute">
+  <div class="row">
+    <% hokbens.forEach(hokben => { %>
+    <div class="col-md-3 mb-4">
+      <div class="card mb-4 h-100" style="width: 18rem" id="<%= hokben._id %>">
+        <img src="<%= hokben.menu[0].gambar %>" class="card-img-top" />
+        <div
+          class="card-body d-flex align-items-center justify-content-center flex-column mb-3"
+        >
+          <h3 class="card-title"><%= hokben.menu[0].title %></h3>
+          <h5 class="fw-semibold mt-2"><%= hokben.menu[0].harga %></h5>
+        </div>
+        <div class="card-footer d-flex justify-content-evenly">
+          <a href="/menu/detail/<%= hokben._id %>">
+            <button class="btn-warning btn rounded-pill" type="button">
+              Detail
+            </button>
+          </a>
+          <a
+            href="/menu/pesan/<%= hokben._id %>"
+            class="btn btn-primary rounded-pill"
+            >Pesan</a
+          >
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>

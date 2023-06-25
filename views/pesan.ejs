@@ -1,0 +1,99 @@
+<div class="formulir">
+  <form class="mt-4" action="/confirm" method="post">
+    <div class="formulir d-flex justify-content-center">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <% if (typeof errors != "undefined") { %>
+
+          <div class="alert alert-danger" role="alert">
+            <ul>
+              <% errors.forEach(error => { %>
+              <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+          </div>
+
+          <% } %>
+          <input type="hidden" value="<%= data._id %>" name="id" />
+          <label for="nama_penerima" class="form-label">Nama penerima</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama_penerima"
+            name="nama_penerima"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="no_telp" class="form-label">No Telp</label>
+          <input
+            type="tel"
+            class="form-control"
+            id="no_telp"
+            required
+            name="no_telp"
+          />
+        </div>
+        <div class="mb-3" style="margin-bottom: 12px; position: relative">
+          <label
+            for="alamat"
+            class="form-label"
+            style="position: absolute; top: -20px; left: 5px"
+            >Alamat</label
+          >
+          <!-- <textarea name="alamat" id="alamat" style="width: 300px; height: 150px;"></textarea> -->
+          <input
+            type="text"
+            class="form-control text-start"
+            id="alamat"
+            name="alamat"
+            required
+          />
+        </div>
+        <hr class="border border-danger border-2 opacity-50" />
+        <div class="mb-3">
+          <label for="nama_item" class="form-label">Nama items</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nama_item"
+            name="nama_item"
+            value="<%= data.menu[0].title %>"
+            readonly
+          />
+        </div>
+        <div class="mb-3 d-flex justify-content-evenly">
+          <div class="col">
+            <label for="harga" class="form-label">Harga</label>
+            <input
+              type="email"
+              class="form-control"
+              id="harga"
+              name="harga"
+              value="<%= data.menu[0].harga %>"
+              readonly
+            />
+          </div>
+          <div class="col ms-3">
+            <label for="jumlah_pembelian" class="form-label">Jumlah</label>
+            <input
+              type="number"
+              class="form-control"
+              id="jumlah_pembelian"
+              value="1"
+              min="1"
+              max="10"
+              name="jumlah_pembelian"
+            />
+          </div>
+        </div>
+        <a href="/menu/#<%= data._id %>" class="btn btn-warning rounded-pill">
+          Batal
+        </a>
+        <button type="submit" class="btn btn-primary rounded-pill">
+          Pesan
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
